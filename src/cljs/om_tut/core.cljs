@@ -7,12 +7,11 @@
 (def app-state (atom {:text "Hello Wolrd!"}))
 
 (om/root
-  app-state
-  (fn [app owner]
-    (dom/h1 nil (:text app)))
-  (. js/document (getElementById "app")))
+ (fn [app owner]
+   (dom/h1 nil (:text app)))
+ app-state
+ {:target (. js/document (getElementById "app"))})
 
 
 
-
-
+(swap! app-state assoc :text "power")
